@@ -511,7 +511,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 ✨ **Dica:** Todos os produtos são itens artesanais, portanto, únicos. Por isso são os produtos que contêm os `id`s dos pedidos.
 
-✨ **Dica:** Pesquise na documentação oficial do **MySQL** sobre a função de agregação `JSON_ARRAYAGG`, ela pode ser bem útil. 😉
+✨ **Dica:** Pesquise na documentação oficial do **MySQL** sobre [a função de agregação `JSON_ARRAYAGG`](https://dev.mysql.com/doc/refman/5.7/en/aggregate-functions.html#function_json-arrayagg), ela pode ser bem útil. 😉
 
 <details close>
   <summary>Além disso, as seguintes verificações serão feitas:</summary>
