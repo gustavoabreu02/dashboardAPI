@@ -1,0 +1,11 @@
+import { Request, Response } from 'express';
+import ProductsService from '../services/products.service';
+
+export default class ProductsController {
+  productsService = new ProductsService();
+
+  async getAllProducts(req: Request, res: Response) {
+    const products = await this.productsService.getAllProducts();
+    res.status(200).json(products);
+  }
+}
