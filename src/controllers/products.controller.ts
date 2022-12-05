@@ -10,7 +10,13 @@ export default class ProductsController {
   }
 
   async createProducts(req: Request, res: Response) {
-    const productCreated = await this.productsService.createProducts(req.body);
-    res.status(201).json(productCreated);
+    const { amount, name } = req.body;
+    if (!name) return res.status(400).json({ message: '"name" is required' });
+    if (!amount) return res.status(400).json({ message: '"amount" is required' });
+    const { message, code } = await this.productsService.createProducts(req.body);
+    if (code) {
+      res.status(code).json({ message });
+    }
+    res.status(201).json(message);
   }
 }
