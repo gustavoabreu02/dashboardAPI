@@ -5,12 +5,12 @@ import jwt from 'jsonwebtoken';
 
 export default function auth(req: Request, res: Response, next: NextFunction) {
   try {
-    const { authorization: token } = req.headers;
+    const { authorization } = req.headers;
 
-    if (!token) {
+    if (!authorization) {
       return res.status(401).json({ message: 'Token not found' });
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
+    const decoded = jwt.verify(authorization, process.env.JWT_SECRET as string);
 
     req.body.user = decoded;
 

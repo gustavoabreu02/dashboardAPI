@@ -1,8 +1,6 @@
 import Joi from 'joi';
-import { IOrder } from '../../interfaces';
-/* import HttpException from '../../shared/http.exception'; */
 
-const schemaBody = Joi.object<IOrder>({
+const schemaBody = Joi.object({
   
   productsIds: Joi.array().min(1).required().messages({
     'any.required': '"productsIds" is required',
@@ -11,12 +9,11 @@ const schemaBody = Joi.object<IOrder>({
   }),
 });
 
-const validationBody = (body: number[]) => {
-  const { error } = schemaBody.validate({ productsIds: body });
+const validationBody = (productsIds: number[]) => {
+  const { error } = schemaBody.validate({ productsIds });
   if (error) {
     const errorCode = error.details[0].type === 'any.required' ? 400 : 422;
     return { message: error.message, code: errorCode };
-    /* throw new HttpException(400, error.message); */
   }
   return { message: null, code: null };
 };

@@ -2,12 +2,6 @@ import { ResultSetHeader, RowDataPacket } from 'mysql2';
 import { IProduct } from '../interfaces';
 import connection from './connection';
 
-/* export const getAllProducts = async (): Promise<IProduct[]> => {
-  const [rows] = await connection.execute<IProduct[] & RowDataPacket[]>('SELECT * FROM Trybesmith.Products;');
-
-return rows
-}; */
-
 export default class ProductsModel {
   connection = connection;
 
@@ -26,12 +20,8 @@ export default class ProductsModel {
     return { id: insertId, ...product };
   }
 
-  async uptdateProduct(id: number, order: number) {
-    console.log(id);
-    console.log(order);
-    
+  async updateProduct(productId: number, insertId: number) {
     const sql = 'UPDATE Trybesmith.Products SET orderId = ? WHERE id = ?';
-    const result = await this.connection.execute<ResultSetHeader>(sql, [order, id]);
-    return result;
+    await this.connection.execute<ResultSetHeader>(sql, [insertId, productId]);
   }
 }

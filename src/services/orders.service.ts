@@ -14,17 +14,17 @@ export default class OrderService {
   }
 
   async ordersCreate(order: IOrder) {
-    const { productsIds } = order;
-       
+    const { productsIds, user } = order;
+
     const { message, code } = validationBody(productsIds);
-    
-    if (message) return { code, message };
-    const orderCreated = await this.orderModel.createOrder(1);
-    console.log(orderCreated);  
+
+    if (code) return { code, message };
+
+    const insertId = await this.orderModel.createOrder(user);
 
     await Promise.all(productsIds
-      .map((prududctId: number) => this.productModel.uptdateProduct(prududctId, orderCreated)));
-    
-    return { message: { userId: orderCreated, productsIds }, code: null };
+      .map((productId) => this.productModel.updateProduct(productId, insertId)));
+
+    return { message: { userId: 3, productsIds }, code: null };
   }
 }
