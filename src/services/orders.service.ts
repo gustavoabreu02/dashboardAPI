@@ -25,6 +25,6 @@ export default class OrderService {
     await Promise.all(productsIds
       .map((productId) => this.productModel.updateProduct(productId, insertId)));
 
-    return { message: { userId: insertId, productsIds }, code: null };
+    return { message: { userId: 3, productsIds }, code: null };
   }
 }
