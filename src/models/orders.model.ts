@@ -21,8 +21,8 @@ export default class OrderModel {
   async createOrder(order: IUser) {
     const sql = 'INSERT INTO Trybesmith.Orders (userId) VALUES (?)';
 
-    const [result] = await this.connection.execute<ResultSetHeader>(sql, [order.id]);
-    const { insertId } = result;
+    const [{ insertId }] = await this.connection.execute<ResultSetHeader>(sql, [order.id]);
+
     return insertId;
   }
 }

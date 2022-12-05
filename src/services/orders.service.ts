@@ -16,15 +16,17 @@ export default class OrderService {
   async ordersCreate(order: IOrder) {
     const { productsIds, user } = order;
 
+    console.log(order);
+    
     const { message, code } = validationBody(productsIds);
 
     if (code) return { code, message };
-
+    
     const insertId = await this.orderModel.createOrder(user);
-
+    
     await Promise.all(productsIds
       .map((productId) => this.productModel.updateProduct(productId, insertId)));
 
-    return { message: { userId: 3, productsIds }, code: null };
+    return { message: { userId: user.id, productsIds }, code: null };
   }
 }
