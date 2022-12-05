@@ -9,6 +9,7 @@ export default class LoginController {
     if (code) {
       return res.status(code).json({ message });
     }
+
     res.status(200).json(message);
   }
 }
