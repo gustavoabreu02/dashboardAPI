@@ -1,13 +1,14 @@
+import 'dotenv/config';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import HttpException from '../shared/http.exception';
+/* import HttpException from '../shared/http.exception'; */
 
-export default function auth(req: Request, _res: Response, next: NextFunction) {
+export default function auth(req: Request, res: Response, next: NextFunction) {
   try {
     const { authorization: token } = req.headers;
 
     if (!token) {
-      throw new HttpException(401, 'Token não encontrado!');
+      return res.status(401).json({ message: 'Token not found' });
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
 
@@ -15,6 +16,6 @@ export default function auth(req: Request, _res: Response, next: NextFunction) {
 
     next();
   } catch (err) {
-    throw new HttpException(401, 'Não autorizado!');
+    return res.status(401).json({ message: 'Invalid token' });
   }
 }

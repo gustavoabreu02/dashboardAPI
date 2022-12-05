@@ -20,7 +20,8 @@ export interface IUser {
 
 export interface IOrder {
   user?: string,
+  username?: string,
   id?: number,
-  userId: number,
-  productsIds?: number[],
+  userId?: number,
+  productsIds: number[],
 }

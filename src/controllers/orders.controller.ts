@@ -8,4 +8,13 @@ export default class OrderController {
     const orders = await this.ordersService.getAllOrders();
     res.status(200).json(orders);
   }
+
+  async ordersCreate(req: Request, res: Response) {
+    const { message, code } = await this.ordersService.ordersCreate(req.body);
+    
+    if (code) {
+      res.status(code).json({ message });
+    }
+    res.status(201).json(message);
+  }
 }
