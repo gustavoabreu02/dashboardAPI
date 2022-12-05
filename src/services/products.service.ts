@@ -14,8 +14,6 @@ export default class ProductsService {
 
   async createProducts(product: IProduct) {
     const { message, code } = validationBody(product);
-    console.log(message);
-    console.log(code);
     
     if (message) return { code, message };
     const productCreated = await this.productsModel.createProducts(product);
