@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { ILogin } from '../../interfaces';
+import { IData } from '../../interfaces';
 /* import HttpException from '../../shared/http.exception'; */
 
 const schemaBody = Joi.object({
@@ -7,7 +7,7 @@ const schemaBody = Joi.object({
   password: Joi.string().required().messages({ 'any.required': '"password" is required' }),
 });
 
-const validationBody = (body: ILogin) => {
+const validationBody = (body: IData) => {
   const { error } = schemaBody.validate(body);
   if (error) {
     return { message: error.message, code: 400 };

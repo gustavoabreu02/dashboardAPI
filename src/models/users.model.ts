@@ -1,14 +1,17 @@
 import { ResultSetHeader, RowDataPacket } from 'mysql2';
-import { ILogin, IUser } from '../interfaces';
+import { ILogin, IUser, IData } from '../interfaces';
 import connection from './connection';
 
 export default class UserModel {
   connection = connection;
 
-  async findByUsername(username: string): Promise<ILogin> {
-    const sql = 'SELECT * FROM Trybesmith.Users WHERE username=?';
+  async findByData(data: IData): Promise<ILogin> {
+    const sql = 'SELECT * FROM DashboardAPI.Users WHERE email=? AND password=?';
 
-    const [[row]] = await this.connection.execute<ILogin[] & RowDataPacket[]>(sql, [username]);
+    const [[row]] = await this.connection.execute<ILogin[] & RowDataPacket[]>(
+      sql,
+      [data.email, data.password],
+    );
     return row;
   }
 

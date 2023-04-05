@@ -5,7 +5,7 @@ export default class LoginController {
   loginService = new LoginService();
 
   async login(req: Request, res: Response) {
-    const { code, message } = await this.loginService.createToken(req.body);
+    const { code, message } = await this.loginService.findByData(req.body);
     if (code) {
       return res.status(code).json({ message });
     }
