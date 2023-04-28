@@ -6,6 +6,7 @@ import loginRouter from './routers/login.router';
 import httpErrorMiddleware from './middlewares/http.error.middleware';
 import routerUsers from './routers/users.router';
 import routerVendas from './routers/vendas.router';
+import routerRcas from './routers/rcas.router';
 
 const app = express();
 const allowedOrigins = ['http://localhost:3000'];
@@ -20,6 +21,7 @@ app.use('/products', router);
 app.use('/login', loginRouter);
 app.use('/users', routerUsers);
 app.use('/vendas', routerVendas);
+app.use('/rcas', routerRcas);
 
 app.use(httpErrorMiddleware);
 export default app;

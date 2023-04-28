@@ -13,6 +13,11 @@ export default class VendasService {
     return vendas;
   }
 
+  async getVendasRCA(sup: ISup): Promise<IVendas[]> {
+    const vendasRCA = await this.vendasModel.getVendasRCA(sup);
+    return vendasRCA;
+  }  
+
 /*   async ordersCreate(order: IOrder) {
     const { productsIds, user } = order;
 

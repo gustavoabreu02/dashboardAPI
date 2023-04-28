@@ -12,12 +12,14 @@ export default class ProductsModel {
     return rows;
   }
 
-  async createProducts(product: IProduct): Promise<IProduct> {
-    const { name, amount } = product;
-    const sql = 'INSERT INTO Trybesmith.Products (name, amount) VALUES (?, ?);';
-    const [rows] = await this.connection.execute<ResultSetHeader>(sql, [name, amount]);
-    const { insertId } = rows;
-    return { id: insertId, ...product };
+  async getProductCodigo(product: IProduct): Promise<IProduct[]> {
+    const sql = `SELECT PRODUTO FROM DashboardAPI.Vendas WHERE CODPROD = (?)
+    GROUP BY PRODUTO;`;
+    const [result] = await this.connection.execute<IProduct[] & RowDataPacket[]>(
+      sql,
+      [product.codigo],
+    );
+    return result;
   }
 
   async updateProduct(productId: number, insertId: number) {

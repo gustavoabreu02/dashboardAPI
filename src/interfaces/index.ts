@@ -1,7 +1,11 @@
 export interface IProduct {
-  id?: number;
-  name: string;
-  amount: string;
+  codigo: number,
+  product?: string;
+}
+
+export interface IRca {
+  codigo: number,
+  rca?: string;
 }
 
 export interface ILogin {
@@ -42,7 +46,8 @@ export interface IVendas {
   venda: string,
   mês: string,
   ano: number,
-  cidade: string;
+  cidade: string,
+  pasta: string;
 }
 
 export interface ISup {

@@ -10,6 +10,11 @@ export default class VendasController {
     res.status(200).json(vendas);
   }
 
+  async getVendasRCA(req: Request, res: Response) {
+    const vendasRCA = await this.vendasService.getVendasRCA(req.body);
+    res.status(200).json(vendasRCA);
+  }  
+
 /*   async ordersCreate(req: Request, res: Response) {
     const { message, code } = await this.ordersService.ordersCreate(req.body);
     if (code) return res.status(code).json({ message });

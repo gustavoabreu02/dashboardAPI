@@ -1,5 +1,5 @@
-import { IProduct } from '../interfaces';
-import ProductsModel from '../models/products.model';
+import { IRca } from '../interfaces';
+import RcasModel from '../models/rcas.model';
 /* import validationBody from './validations/products.validation'; */
 
 /* const productsModel = new ProductsModel();
@@ -9,8 +9,8 @@ const getAllProducts = async (): Promise<IProduct[]> => {
   return products;
 };
  */
-export default class ProductsService {
-  productsModel = new ProductsModel();
+export default class RcasService {
+  rcasModel = new RcasModel();
 
   /*   async createProducts(product: IProduct) {
     const { message, code } = validationBody(product);
@@ -20,8 +20,8 @@ export default class ProductsService {
     return { message: productCreated, code: null };
   } */
 
-  async getProductCodigo(product: IProduct): Promise<IProduct[]> {
-    const products = await this.productsModel.getProductCodigo(product);
-    return products;
+  async getRcaCodigo(rca: IRca): Promise<IRca[]> {
+    const rcas = await this.rcasModel.getRcaCodigo(rca);
+    return rcas;
   }
 }

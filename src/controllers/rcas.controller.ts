@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import ProductsService from '../services/products.service';
+import RcasService from '../services/rcas.service';
 
-export default class ProductsController {
-  productsService = new ProductsService();
+export default class RcasController {
+  rcasService = new RcasService();
 
-  async getProductCodigo(req: Request, res: Response) {
-    const products = await this.productsService.getProductCodigo(req.body);
-    res.status(200).json(products);
+  async getRcaCodigo(req: Request, res: Response) {
+    const rcas = await this.rcasService.getRcaCodigo(req.body);
+    res.status(200).json(rcas);
   }
 
 /*   async createProducts(req: Request, res: Response) {
