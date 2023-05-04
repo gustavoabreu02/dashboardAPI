@@ -28,8 +28,10 @@ export interface IData {
 }
 
 export interface ICampanha {
-  id: number,
-  file: File;
+  id?: number,
+  name: any,
+  sup: any,
+  file: string; 
 }
 
 export interface IVendas {
