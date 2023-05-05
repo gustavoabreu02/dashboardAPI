@@ -17,6 +17,10 @@ router.post(
   campanhaController.createCampanhas.bind(campanhaController),
 );
 
+router.post('/sup', campanhaController.getCampanhasSup.bind(campanhaController));
+
+router.get('/', campanhaController.getAllCampanhas.bind(campanhaController));
+
 router.get('/download/:filename', (req, res) => {
   const { filename } = req.params;
 
@@ -24,8 +28,8 @@ router.get('/download/:filename', (req, res) => {
     res.status(400).send('O arquivo deve ter a extensão .xlsx!');
     return;
   }
-  const diretorio = '/home/gustavoabreu/Documentos/dash/sd-022-a-project-trybesmith/uploads';
-  const filePath = `${diretorio}}/uploads/${filename}`;
+  const diretorio = '/home/gustavoabreu/Documentos/dash/sd-022-a-project-trybesmith';
+  const filePath = `${diretorio}/uploads/${filename}`;
 
   fs.access(filePath, (err) => {
     if (err) {
@@ -37,6 +41,8 @@ router.get('/download/:filename', (req, res) => {
     res.sendFile(filePath);
   });
 });
+
+router.delete('/delete/', campanhaController.removeCampanhas.bind(campanhaController));
 
 router.get('/uploads', (req, res) => {
   fs.readdir('./uploads', (err, files) => {

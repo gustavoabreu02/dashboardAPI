@@ -12,11 +12,21 @@ export default class VendasService {
     const vendas = await this.vendasModel.getVendasSup(sup);
     return vendas;
   }
-
+  
+  async getAllVendas(mes: string): Promise<IVendas[]> {
+    const allVendas = await this.vendasModel.getAllVendas(mes);
+    return allVendas;
+  }
+  
   async getVendasRCA(sup: ISup): Promise<IVendas[]> {
     const vendasRCA = await this.vendasModel.getVendasRCA(sup);
     return vendasRCA;
-  }  
+  }
+
+  async getAllVendasRCA(mes: string): Promise<IVendas[]> {
+    const allVendasRCA = await this.vendasModel.getAllVendasRCA(mes);
+    return allVendasRCA;
+  }
 
 /*   async ordersCreate(order: IOrder) {
     const { productsIds, user } = order;

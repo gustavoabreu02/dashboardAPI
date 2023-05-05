@@ -27,11 +27,20 @@ export interface IData {
   password: string;
 }
 
+export interface ICampanhaFile {
+  id: number,
+  file: string;
+}
+
 export interface ICampanha {
   id?: number,
   name: any,
   sup: any,
   file: string; 
+}
+
+export interface ICampanhaSup {
+  sup: string;
 }
 
 export interface IVendas {
