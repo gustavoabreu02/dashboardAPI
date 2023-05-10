@@ -1,5 +1,5 @@
-import { ResultSetHeader, RowDataPacket } from 'mysql2';
-import { IVendas, IUser, ISup } from '../interfaces';
+import { RowDataPacket } from 'mysql2';
+import { IVendas, ISup } from '../interfaces';
 
 import connection from './connection';
 
@@ -62,13 +62,5 @@ export default class VendasModel {
       [mes],
     );
     return result;
-  }
-
-  async createOrder(order: IUser) {
-    const sql = 'INSERT INTO Trybesmith.Orders (userId) VALUES (?)';
-
-    const [{ insertId }] = await this.connection.execute<ResultSetHeader>(sql, [order.id]);
-
-    return insertId;
   }
 }

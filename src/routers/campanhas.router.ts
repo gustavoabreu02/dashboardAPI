@@ -28,9 +28,11 @@ router.get('/download/:filename', (req, res) => {
     res.status(400).send('O arquivo deve ter a extensão .xlsx!');
     return;
   }
-  const diretorio = '/home/gustavoabreu/Documentos/dash/sd-022-a-project-trybesmith';
-  const filePath = `${diretorio}/uploads/${filename}`;
 
+  const filePath = `${__dirname.replace('src/routers', '')}uploads/${filename}`;
+
+  console.log(filePath);
+  
   fs.access(filePath, (err) => {
     if (err) {
       res.status(404).send('Arquivo não encontrado!');

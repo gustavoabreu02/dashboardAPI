@@ -4,7 +4,6 @@ import 'express-async-errors';
 import router from './routers/products.router';
 import loginRouter from './routers/login.router';
 import httpErrorMiddleware from './middlewares/http.error.middleware';
-import routerUsers from './routers/users.router';
 import routerVendas from './routers/vendas.router';
 import routerRcas from './routers/rcas.router';
 import routerCampanhas from './routers/campanhas.router';
@@ -22,7 +21,6 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use('/products', router);
 app.use('/login', loginRouter);
-app.use('/users', routerUsers);
 app.use('/vendas', routerVendas);
 app.use('/rcas', routerRcas);
 app.use('/campanhas', routerCampanhas);
