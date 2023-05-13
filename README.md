@@ -1,4 +1,4 @@
-# API Backend do Dashboard GD7
+# API Backend do Dashboard
 
 Este é o repositório da API Backend do Dashboard da empresa GD7. Ele foi desenvolvido com Node.js e TypeScript para os endpoints. O objetivo da API é fornecer aos supervisores acesso fácil às informações de campanhas e vendas mensais, permitindo a conexão com o banco de dados e recuperar informações relevantes para exibir no frontend.
 
